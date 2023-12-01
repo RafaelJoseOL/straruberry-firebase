@@ -15,6 +15,8 @@ import { useLogin } from "./hooks/useLogin";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from "./config/firebase-config";
+import { SocialIcon } from 'react-social-icons';
+import straruIcon from "./img/straruberry-icon.png";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -84,7 +86,7 @@ function App() {
         <Router>
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-              <Link to="/" className="navbar-brand navbarItem ms-4">Inicio</Link>
+              <Link to="/" className="navbar-brand ms-4 fs-1 straru-navBar">Straruberry</Link>
               <button className="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
@@ -169,6 +171,31 @@ function App() {
             <Route path="/editprint" element={<EditPrint authState={authState} setAuthState={setAuthState} />} />
             <Route path="/*" element={<PageNotFound />} />
           </Routes>
+
+          <footer className="bg-dark text-center text-white">
+            <div className="container p-4">
+              {/* <section className="mb-4">
+                <h3>
+                  Redes sociales
+                </h3>
+              </section> */}
+              <section className="my-auto">
+                <a href="https://straruberry.carrd.co/" target="_blank" rel="noreferrer noopener" className='mx-2'>
+                  <img src={straruIcon} alt="straruberry-icon" className='img-fluid rounded-circle straruIcon' />
+                </a>
+                <SocialIcon className="mx-2" url="https://twitter.com/Straruberry" target="_blank" rel="noreferrer noopener" />
+                <SocialIcon className="mx-2" url="https://www.instagram.com/straruberry" target="_blank" rel="noreferrer noopener" />
+                {/* <SocialIcon className="mx-2" url="https://straruberry.carrd.co/" /> */}
+              </section>
+              {/* <section className="">
+                <a href="mailto:rafaeljoseossoriolopez@gmail.com" target="_blank" rel="noreferrer noopener">
+                  <h3>
+                    Contacto: rafaeljoseossoriolopez@gmail.com
+                  </h3>
+                </a>
+              </section> */}
+            </div>
+          </footer>
         </Router>
       </AuthContext.Provider>
     </div>

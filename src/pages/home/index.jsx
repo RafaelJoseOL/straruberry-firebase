@@ -3,7 +3,7 @@ import { collection, getDocs, query, doc, getDoc, updateDoc } from 'firebase/fir
 import { db } from "../../config/firebase-config";
 
 export const Home = ({ authState }) => {
-    const defaultTags = ["Tengo", "Quiero", "Stock A4", "Stock A5", "Twitch"];
+    const defaultTags = ["Quiero", "Tengo", "Especial", "Twitch", "Stock A4", "Stock A5"];
     const [listOfPrints, setListOfPrints] = useState([]);
     const [listOfTags, setListOfTags] = useState([]);
     const [selectedTags, setSelectedTags] = useState([]);
@@ -117,21 +117,21 @@ export const Home = ({ authState }) => {
         return tengoMatch && quieroMatch && tagsMatch && nameMatch;
     });
 
-    const handlePrintOwnership = async (printId) => {  
+    const handlePrintOwnership = async (printId) => {
         try {
             if (authState && authState.id) {
                 const userDocRef = doc(db, 'users', authState.id);
                 const userDocSnap = await getDoc(userDocRef);
-    
+
                 if (userDocSnap.exists()) {
                     const updatedOwnedPrints = printsOwned.includes(printId)
-                    ? printsOwned.filter((id) => id !== printId)
-                    : [...printsOwned, printId];
-    
+                        ? printsOwned.filter((id) => id !== printId)
+                        : [...printsOwned, printId];
+
                     setPrintsOwned(updatedOwnedPrints);
-    
+
                     await updateDoc(userDocRef, { printsOwned: updatedOwnedPrints });
-    
+
                     console.log('Base de datos actualizada correctamente');
                 }
             }
@@ -139,22 +139,22 @@ export const Home = ({ authState }) => {
             console.error('Error al actualizar la base de datos:', error);
         }
     };
-    
+
     const handlePrintWanted = async (printId) => {
         try {
             if (authState && authState.id) {
                 const userDocRef = doc(db, 'users', authState.id);
                 const userDocSnap = await getDoc(userDocRef);
-    
+
                 if (userDocSnap.exists()) {
                     const updatedWantedPrints = printsWanted.includes(printId)
-                    ? printsWanted.filter((id) => id !== printId)
-                    : [...printsWanted, printId];
-    
+                        ? printsWanted.filter((id) => id !== printId)
+                        : [...printsWanted, printId];
+
                     setPrintsWanted(updatedWantedPrints);
-    
+
                     await updateDoc(userDocRef, { printsWanted: updatedWantedPrints });
-    
+
                     console.log('Base de datos actualizada correctamente');
                 }
             }
@@ -162,12 +162,12 @@ export const Home = ({ authState }) => {
             console.error('Error al actualizar la base de datos:', error);
         }
     };
-    
+
 
     return (
         <div className='container-fluid mainHome'>
             <div className='row'>
-                <div className='col-md-2 sideBar text-light d-flex flex-column justify-content-top'>
+                <div className='d-none d-md-block col-md-2 sideBar text-light d-flex flex-column justify-content-top'>
                     <div className='sortDropdown my-3'>
                         <label htmlFor='sortSelect' className='form-label text-light me-2'>
                             Ordenar por:
@@ -230,11 +230,81 @@ export const Home = ({ authState }) => {
                         </ul>
                     </div>
                 </div>
+                <div className='d-md-none d-md-block mt-3'>
+                    <p className='col-md-12 text-center'>
+                        <button className="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+                            Búsqueda/Filtro
+                        </button>
+                    </p>
+                    <div className="collapse text-align-center" id="collapseFilter">
+                        <div className='sortDropdown my-3'>
+                            <label htmlFor='sortSelect' className='form-label text-light me-2'>
+                                Ordenar por:
+                            </label>
+                            <select
+                                id='sortSelect'
+                                className='form-select'
+                                value={sortOption}
+                                onChange={handleSortChange}
+                            >
+                                <option value='Alfabetico'>Alfabético</option>
+                                <option value='AlfabeticoInverso'>Alfabético Inverso</option>
+                            </select>
+                        </div>
+                        <div className='searchBar mt-3'>
+                            <input
+                                type='text'
+                                className='form-control'
+                                placeholder='Buscar por nombre...'
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                        </div>
+                        <div className='defaultTagsList my-5'>
+                            <ul className='list-group'>
+                                {defaultTags.map((value, key) => (
+                                    <li key={key} className='list-group-item bg-dark text-light'>
+                                        <label className='form-check-label'>
+                                            <input
+                                                type='checkbox'
+                                                className='form-check-input me-2'
+                                                value={value}
+                                                checked={(value === 'Tengo' && showOwnedOnly)
+                                                    || (value === 'Quiero' && showWantedOnly)
+                                                    || selectedTags.includes(value)}
+                                                onChange={() => handleTagClick(value)}
+                                            />
+                                            {value}
+                                        </label>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className='tagsList'>
+                            <ul className='list-group'>
+                                {listOfTags.sort((a, b) => a.localeCompare(b)).map((tag, key) => (
+                                    <li key={key} className='list-group-item bg-dark text-light'>
+                                        <label className='form-check-label'>
+                                            <input
+                                                type='checkbox'
+                                                className='form-check-input me-2'
+                                                value={tag}
+                                                checked={selectedTags.includes(tag)}
+                                                onChange={() => handleTagClick(tag)}
+                                            />
+                                            {tag}
+                                        </label>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div className='col-md-10 prints mt-3'>
                     <div className='row'>
                         {filteredPrints.map((print, index) => (
-                            <div className='col-md-4 print mb-4 d-flex flex-column align-items-center' key={index}>
-                                <a href={print.print_url}>
+                            <div className='col-10 col-md-4 print mb-4 d-flex flex-column align-items-center' key={index}>
+                                <a href={print.print_url} target="_blank" rel="noreferrer noopener">
                                     <img src={print.print_url} alt={print.print_name} className='img-fluid' />
                                 </a>
                                 <div className='row'>

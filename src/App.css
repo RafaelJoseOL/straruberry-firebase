@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=WindSong&display=swap');
+
 :root {
   width: 100%;
   height: 100%;
@@ -78,6 +80,16 @@ img {
 .navBarForm a {
   /* width: 200px; */
   height: 30px;
+}
+
+.straru-navBar{
+  font-family: 'WindSong' !important;
+  color:#BDFFFF !important;
+}
+
+.straruIcon{
+  width: 50px;
+  height: 50px;
 }
 
 /* Corazon (prints que tengo) */
