@@ -300,10 +300,10 @@ export const Home = ({ authState }) => {
                         </div>
                     </div>
                 </div>
-                <div className='col-md-10 prints mt-3'>
+                <div className='col-10 prints mt-3 mx-auto'>
                     <div className='row'>
                         {filteredPrints.map((print, index) => (
-                            <div className='col-10 col-md-4 print mb-4 d-flex flex-column align-items-center' key={index}>
+                            <div className='col-6 col-md-4 print mb-4 d-flex flex-column align-items-center' key={index}>
                                 <a href={print.print_url} target="_blank" rel="noreferrer noopener">
                                     <img src={print.print_url} alt={print.print_name} className='img-fluid' />
                                 </a>

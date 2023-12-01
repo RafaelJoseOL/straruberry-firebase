@@ -118,7 +118,7 @@ function App() {
                 )}
                 {authState.status ? (
                   <div className="d-flex ms-auto">
-                    <p className="my-auto mx-3">¡Hola, {authState.email}!</p>
+                    <p className="my-auto mx-3">{authState.email}</p>
                     <button type="button" className="btn btn-outline-primary me-4" onClick={logout}>
                       Cerrar sesión
                     </button>
