@@ -24,11 +24,15 @@
 }
 
 .mainContainer {
-  min-height: 95vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.myFooter {
+footer {
   margin-top: auto;
+  bottom: 0;
+  background-color: red !important;
 }
 
 img {

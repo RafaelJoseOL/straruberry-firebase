@@ -147,7 +147,7 @@ export const EditPrint = ({ authState }) => {
                             onSubmit={(values, { setSubmitting }) => handleSaveClick(values, { setSubmitting })}
                             enableReinitialize
                         >
-                            <Form className='form-container printDetails d-flex flex-column justify-content-center mt-4 mx-auto'>
+                            <Form className='form-container printDetails d-flex flex-column justify-content-center mt-4 mx-auto col-10 col-md-3'>
                                 <div className='row mt-3 mx-auto'>
                                     <label htmlFor="nameInput" className='form-label text-center'>Nombre</label>
                                     <Field type="text" id="nameInput" name="name" className="form-control" />
