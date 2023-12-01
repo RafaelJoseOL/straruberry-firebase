@@ -84,16 +84,20 @@ export const NewPrint = ({ authState }) => {
                                     <div id='checkbox-group' className='d-flex flex-wrap'>
                                         <div className='mx-auto defaultTags'>
                                             <div className='form-check form-check-inline'>
+                                                <Field type='checkbox' name='tags' value={"Especial"} className='form-check-input' />
+                                                <label className='form-check-label'>{"Especial"}</label>
+                                            </div>
+                                            <div className='form-check form-check-inline'>
+                                                <Field type='checkbox' name='tags' value={"Twitch"} className='form-check-input' />
+                                                <label className='form-check-label'>{"Twitch"}</label>
+                                            </div>
+                                            <div className='form-check form-check-inline'>
                                                 <Field type='checkbox' name='tags' value={"Stock A4"} className='form-check-input' />
                                                 <label className='form-check-label'>{"Stock A4"}</label>
                                             </div>
                                             <div className='form-check form-check-inline'>
                                                 <Field type='checkbox' name='tags' value={"Stock A5"} className='form-check-input' />
                                                 <label className='form-check-label'>{"Stock A5"}</label>
-                                            </div>
-                                            <div className='form-check form-check-inline'>
-                                                <Field type='checkbox' name='tags' value={"Twitch"} className='form-check-input' />
-                                                <label className='form-check-label'>{"Twitch"}</label>
                                             </div>
                                         </div>
                                     </div>
