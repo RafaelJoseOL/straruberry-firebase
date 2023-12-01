@@ -8,6 +8,8 @@
   background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
     linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
   background-size: 100px 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .App {
@@ -19,6 +21,14 @@
   background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
     linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
   background-size: 100px 100px;
+}
+
+.mainContainer {
+  min-height: 95vh;
+}
+
+.myFooter {
+  margin-top: auto;
 }
 
 img {
@@ -82,14 +92,20 @@ img {
   height: 30px;
 }
 
-.straru-navBar{
+.straru-navBar {
   font-family: 'WindSong' !important;
-  color:#BDFFFF !important;
+  color: #BDFFFF !important;
 }
 
-.straruIcon{
+.straruIcon {
   width: 50px;
   height: 50px;
+}
+
+.editPrintLiElement {
+  display: inline-block;
+  padding: 8px;
+  cursor: pointer;
 }
 
 /* Corazon (prints que tengo) */
@@ -378,7 +394,7 @@ img {
 /* Formularios */
 
 .form-container {
-  width: 400px;
+  width: 80%;
   background: linear-gradient(#212121, #212121) padding-box,
     linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
   border: 2px solid transparent;

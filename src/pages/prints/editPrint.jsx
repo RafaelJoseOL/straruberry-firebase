@@ -13,6 +13,7 @@ export const EditPrint = ({ authState }) => {
     const [listOfPrints, setListOfPrints] = useState([]);
     const [listOfTags, setListOfTags] = useState([]);
     const [selectedPrint, setSelectedPrint] = useState(null);
+    const [searchedPrint, setSearchedPrint] = useState('');
 
     useEffect(() => {
         const fetchPrints = async () => {
@@ -27,7 +28,6 @@ export const EditPrint = ({ authState }) => {
                         print_tags: doc.data().print_tags,
                     };
                 });
-                console.log(printsData)
                 setListOfPrints(printsData);
             } catch (error) {
                 console.error('Error al obtener las prints:', error);
@@ -88,6 +88,10 @@ export const EditPrint = ({ authState }) => {
         }
     };
 
+    const suggestedPrints = listOfPrints.filter(
+        (print) => print.print_name.toLowerCase().includes(searchedPrint.toLowerCase())
+    );
+
     const initialValues = {
         name: selectedPrint ? selectedPrint.print_name : '',
         imageURL: selectedPrint ? selectedPrint.print_url : '',
@@ -107,12 +111,34 @@ export const EditPrint = ({ authState }) => {
                         <label htmlFor="printSelect" className='mx-3'>Selecciona una lámina:</label>
                         <select id="printSelect" onChange={(e) => updateSelectedPrint(e)}>
                             <option value="">Elige una</option>
-                            {listOfPrints.sort((a, b) => a.print_id - b.print_id).map((print) => (
+                            {listOfPrints.sort((a, b) => a.print_name.localeCompare(b.print_name)).map((print) => (
                                 <option key={print.print_id} value={print.print_id}>
                                     {`${print.print_id} - ${print.print_name}`}
                                 </option>
                             ))}
                         </select>
+                    </div>
+                    <div>
+                        <div className='searchPrint d-flex justify-content-center mt-4'>
+                            <label htmlFor='searchPrintInput' className='mx-3'>Busca por nombre:</label>
+                            <input
+                                type='text'
+                                id='searchPrintInput'
+                                value={searchedPrint}
+                                onChange={(e) => setSearchedPrint(e.target.value)}
+                                placeholder='Nombre de la lámina'
+                            />
+                        </div>
+                        {searchedPrint && (
+                            <ul className='d-flex flex-column justify-content-center text-center list-unstyled mt-3'>
+                                {suggestedPrints.map((print) => (
+                                    <li key={print.print_id} onClick={() => setSelectedPrint(print)}
+                                        className='text-primary text-decoration-underline editPrintLiElement'>
+                                        {`${print.print_id} - ${print.print_name}`}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                     {selectedPrint && (
                         <Formik

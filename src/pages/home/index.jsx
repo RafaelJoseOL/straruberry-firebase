@@ -316,7 +316,7 @@ export const Home = ({ authState }) => {
                                                         <div className="con-like">
                                                             <input className="like"
                                                                 type="checkbox"
-                                                                title="like"
+                                                                title="quiero"
                                                                 checked={printsWanted.includes(print.print_id)}
                                                                 onChange={() => handlePrintWanted(print.print_id)}
                                                             />
@@ -350,7 +350,9 @@ export const Home = ({ authState }) => {
                                             <>
                                                 <div>
                                                     <label className="ui-bookmark">
-                                                        <input type="checkbox"
+                                                        <input 
+                                                            type="checkbox"
+                                                            title="tengo"
                                                             checked={printsOwned.includes(print.print_id)}
                                                             onChange={() => handlePrintOwnership(print.print_id)}
                                                         />

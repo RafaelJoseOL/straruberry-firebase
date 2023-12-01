@@ -32,7 +32,7 @@ export const NewTag = ({ authState }) => {
             {authState.admin ? (
                 <>
                     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-                        <Form className='addTagForm form-container mt-5 mx-auto col-3'>
+                        <Form className='addTagForm form-container mt-5 mx-auto col-10 col-md-3'>
                             <div className="row justify-content-center mx-auto">
                                 <div className='mb-3'>
                                     <label htmlFor='inputAddTagName' className='form-label'>
