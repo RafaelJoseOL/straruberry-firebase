@@ -71,14 +71,6 @@ export const Home = ({ authState }) => {
         fetchPrints();
     }, [authState]);
 
-    // useEffect(() => {
-    //     console.log(listOfPrints);
-    //   }, [listOfPrints]);
-
-    //   useEffect(() => {
-    //     console.log(listOfTags);
-    //   }, [listOfTags]);
-
     const handleSortChange = (e) => {
         setSortOption(e.target.value);
     };
@@ -303,7 +295,7 @@ export const Home = ({ authState }) => {
                 <div className='col-10 prints mt-3 mx-auto'>
                     <div className='row'>
                         {filteredPrints.map((print, index) => (
-                            <div className='col-6 col-md-4 print mb-4 d-flex flex-column align-items-center' key={index}>
+                            <div className='col-6 col-md-4 print mb-4 d-flex flex-column align-items-center justify-content-center' key={index}>
                                 <a href={print.print_url} target="_blank" rel="noreferrer noopener">
                                     <img src={print.print_url} alt={print.print_name} className='img-fluid' />
                                 </a>
@@ -350,7 +342,7 @@ export const Home = ({ authState }) => {
                                             <>
                                                 <div>
                                                     <label className="ui-bookmark">
-                                                        <input 
+                                                        <input
                                                             type="checkbox"
                                                             title="tengo"
                                                             checked={printsOwned.includes(print.print_id)}

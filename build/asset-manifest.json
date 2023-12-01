@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.7f3c305c.css",
-    "main.js": "/static/js/main.e75b57a0.js",
+    "main.css": "/static/css/main.260f2278.css",
+    "main.js": "/static/js/main.f36729b4.js",
     "static/media/straruberry-icon.png": "/static/media/straruberry-icon.132f01661604232e2b1f.png",
     "index.html": "/index.html",
-    "main.7f3c305c.css.map": "/static/css/main.7f3c305c.css.map",
-    "main.e75b57a0.js.map": "/static/js/main.e75b57a0.js.map"
+    "main.260f2278.css.map": "/static/css/main.260f2278.css.map",
+    "main.f36729b4.js.map": "/static/js/main.f36729b4.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f3c305c.css",
-    "static/js/main.e75b57a0.js"
+    "static/css/main.260f2278.css",
+    "static/js/main.f36729b4.js"
   ]
 }

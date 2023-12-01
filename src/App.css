@@ -37,11 +37,19 @@ footer {
 
 img {
   border-radius: 6%;
-  max-width: 400px;
-  max-height: 600px;
+  max-width: 350px;
+  max-height: 500px;
   /* width: 100%;
   height: auto; */
 }
+
+.icon-subtext {
+  display: block;
+  font-size: 14px;
+  margin-top: 5px;
+  color: #888;
+}
+
 
 .prints {
   text-align: center;
@@ -201,7 +209,7 @@ img {
 
 .ui-bookmark {
   --icon-size: 24px;
-  --icon-secondary-color: rgb(77, 77, 77);
+  --icon-secondary-color: rgb(158, 158, 158);
   --icon-hover-color: rgb(97, 97, 97);
   --icon-primary-color: rgb(31, 82, 248);
   --icon-circle-border: 1px solid var(--icon-primary-color);

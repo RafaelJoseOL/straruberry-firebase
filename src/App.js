@@ -172,14 +172,23 @@ function App() {
               <Route path="/editprint" element={<EditPrint authState={authState} setAuthState={setAuthState} />} />
               <Route path="/*" element={<PageNotFound />} />
             </Routes>
-            <footer className="bg-dark text-center text-white myFooter">
-              <div className="container p-4">
-                <section className="my-auto">
-                  <a href="https://straruberry.carrd.co/" target="_blank" rel="noreferrer noopener" className='mx-2'>
-                    <img src={straruIcon} alt="straruberry-icon" className='img-fluid rounded-circle straruIcon' />
-                  </a>
-                  <SocialIcon className="mx-2" url="https://twitter.com/Straruberry" target="_blank" rel="noreferrer noopener" />
-                  <SocialIcon className="mx-2" url="https://www.instagram.com/straruberry" target="_blank" rel="noreferrer noopener" />
+            <footer className="bg-dark text-center text-white myFooter row">
+              <div className="container p-4 col-10 col-md-3">
+                <section className="my-auto row">
+                  <div className='carrd col-4'>
+                    <a href="https://straruberry.carrd.co/" target="_blank" rel="noreferrer noopener">
+                      <img src={straruIcon} alt="straruberry-icon" className='img-fluid rounded-circle straruIcon' />
+                    </a>
+                    <span className="icon-subtext">Social</span>
+                  </div>
+                  <div className='twitter col-4'>
+                    <SocialIcon url="https://twitter.com/Straruberry" target="_blank" rel="noreferrer noopener" />
+                    <span className="icon-subtext">Twitter</span>
+                  </div>
+                  <div className='instagram col-4'>
+                    <SocialIcon className="mx-2" url="https://www.instagram.com/straruberry" target="_blank" rel="noreferrer noopener" />
+                    <span className="icon-subtext">Instagram</span>
+                  </div>
                 </section>
               </div>
             </footer>
