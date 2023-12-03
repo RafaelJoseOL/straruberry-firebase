@@ -5,6 +5,7 @@ import { Register } from "./pages/register/index";
 import { NewPrint } from "./pages/prints/newPrint";
 import { NewTag } from "./pages/prints/newTag";
 import { EditPrint } from "./pages/prints/editPrint";
+import { Faq } from "./pages/faq/index";
 import PageNotFound from './pages/notFound/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -98,8 +99,13 @@ function App() {
                   <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
+                  <div className='mb-2 mb-lg-0 ms-4'>
+                    <Link to="/faq" className="navbarItem">
+                      FAQ
+                    </Link>
+                  </div>
                   {authState.admin && (
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-2">
                       <li className="nav-item active my-auto mx-3">
                         <Link to="/newprint" className="navbarItem">
                           Añadir print
@@ -170,9 +176,10 @@ function App() {
               <Route path="/newprint" element={<NewPrint authState={authState} setAuthState={setAuthState} />} />
               <Route path="/newtag" element={<NewTag authState={authState} setAuthState={setAuthState} />} />
               <Route path="/editprint" element={<EditPrint authState={authState} setAuthState={setAuthState} />} />
+              <Route path="/faq" element={<Faq authState={authState} setAuthState={setAuthState} />} />
               <Route path="/*" element={<PageNotFound />} />
             </Routes>
-            <footer className="bg-dark text-center text-white myFooter row">
+            <footer className="bg-dark text-center text-white myFooter">
               <div className="container p-4 col-10 col-md-3">
                 <section className="my-auto row">
                   <div className='carrd col-4'>
